@@ -1,0 +1,107 @@
+
+<div ng-controller="etlController" class="etl_container">
+
+	<div class="top_bar"></div>
+		<div class="etl_header">
+			<div class="hader_left" style="float:left;width:60%">
+			<h4>ETL Engineering</h4>
+			</div>
+			<div class="hader_right" style="float:left;width:38%">
+			<h6><span style="color:#3B3BC5;cursor:pointer" ng-click="showInst()">Read Instructions</span></h6>
+			
+			</div>
+		</div>
+			<div class="border-bottom"></div>
+
+		<div class="etl_body">
+&nbsp;		
+
+			<div class="etl_body_container" ng-class="{'fadeInDown': showInstructions}" ng-show="showInstructions">
+			<div class="hader_left" style="float:left;width:60%">
+			<h3>Instructions</h3>
+			</div>
+				<div class="hader_right" style="float:right;width:8%">
+				
+				<span  style="color:#3B3BC5;cursor:pointer" target="_self" ng-click="showInst()">Close</span>
+				</div>		
+			<table>
+			<tr>
+			<td><b>Desc : Simple App to Read multiple map and data file and display the result in a format</b></td>
+			</tr>
+			<tr>
+			<td>Step 1 : Select Data file</td>
+			</tr>
+			<tr>
+			<td>Step 2 : Select Matching Map file</td>
+			</tr>
+			<tr>
+			<td>Step 3 : Click upload, result will be constructed and displayed, repeat the steps for all the data-map file combinations</td>
+			</tr>
+			
+			</table>
+			
+			
+
+			</div>
+			<div class="etl_body_container">
+			<div class="etl_body_section">
+			<div class="section">
+			<form>
+			<div>Select Data File</div>
+			<div class="fileUpload btn btn-primary">
+			<input type="file" id="fileUpl1" on-read-file="showContent($fileContent,'data')" class="styleFileUpl"></input>
+			</div>
+			</form>
+		
+			
+			</div>
+						<div class="section">
+						+
+						</div>
+			<div class="section">
+			<div>Select Map File</div>
+			<div class="fileUpload btn btn-primary">
+			<input type="file" id="fileUpl2" on-read-file="showContent($fileContent,'map')" class="styleFileUpl"></input>
+			</div>
+			</div>
+			<div class="section uplbtn">
+			<button ng-click="upload()" class="addbtbn">Upload</button>
+			</div>
+						<div style="clear:both;"></div>
+
+			</div>
+			<div style="clear:both;"></div>
+			<div class="error" ng-class="{'fadeInDown': !customer.data.length&&renderUpl||errorDisplay}" ng-show="!customer.data.length&&renderUpl||errorDisplay">
+			Please Select matching data and map file
+			
+			</div>
+			<div ng-show="(customer.data.length&& showRecords)" ng-class="{'fadeIn': customer.data.length && showRecords,'fadeInNew': customer.data.length && !showRecords}"> 
+			<h2>No Of Records: {{  customer.data.length }}</h2> 
+			
+				
+				
+				<mydirect myname="customer.data" />
+				
+	
+			</div>
+			
+			<div ng-show="(customer.data.length&& !showRecords)" ng-class="{'fadeIn': customer.data.length && showRecords,'fadeInNew': customer.data.length && !showRecords}"> 
+			<h2>No Of Records: {{  customer.data.length }}</h2> 
+			
+				
+				
+				<mydirect myname="customer.data" />
+				
+	
+			</div>
+
+			
+
+<div class="clearBoth"></div>
+					
+			
+			
+		</div>
+		<div class="clearBoth"></div>
+		
+</div>
